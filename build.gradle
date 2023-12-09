@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+version = System.getenv('BITBUCKET_BUILD_NUMBER') ?: System.getenv('BUILD_ID')
+version = version == 'unspecified' ? "SNAPSHOT" : version
+
+jar {
+    archiveBaseName = 'trade-bot'
+    manifest {
+        attributes "Main-Class": "Main"
+    }
+    enabled=false
+    archiveClassifier = ''
+}
+
+repositories {
+    maven {
+        url 'https://repo.diginetica.net/artifactory/digi-virtual'
+        credentials {
+            username = "admin"
+            password = "hmd8lorqq"
+        }
+    }
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}

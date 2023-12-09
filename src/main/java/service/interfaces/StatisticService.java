@@ -1,0 +1,17 @@
+package service.interfaces;
+
+import java.util.List;
+
+import entity.ActionStatus;
+
+public interface StatisticService {
+
+  /**
+   * Using for saving List<ActionStatus>. This data can be used for debugging or improvement predictions and strategies
+   *
+   * @param actionStatusList List of statuses from ActionService. Cannot be null
+   * @return status of saving. If save is ok return true, else false
+   */
+  boolean saveActionStatus(List<ActionStatus> actionStatusList);
+
+}
