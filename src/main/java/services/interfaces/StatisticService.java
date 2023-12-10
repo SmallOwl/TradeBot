@@ -1,10 +1,11 @@
-package service.interfaces;
+package services.interfaces;
 
 import java.util.List;
 
-import entity.ActionStatus;
+import entities.ActionStatus;
 
 public interface StatisticService {
+
 
   /**
    * Using for saving List<ActionStatus>. This data can be used for debugging or improvement predictions and strategies

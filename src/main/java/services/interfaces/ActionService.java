@@ -1,9 +1,9 @@
-package service.interfaces;
+package services.interfaces;
 
 import java.util.List;
 
-import entity.Action;
-import entity.ActionStatus;
+import entities.Action;
+import entities.ActionStatus;
 
 public interface ActionService {
 

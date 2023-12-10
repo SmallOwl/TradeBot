@@ -1,4 +1,4 @@
-package service.implementations;
+package services.implementations;
 
 import java.util.List;
 import java.util.Map;
@@ -8,17 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import entity.Action;
-import entity.ActionStatus;
-import entity.Active;
-import entity.Prediction;
+import entities.Action;
+import entities.ActionStatus;
+import entities.Active;
+import entities.Prediction;
 import lombok.extern.slf4j.Slf4j;
-import service.interfaces.ActionService;
-import service.interfaces.ActiveService;
-import service.interfaces.PredictionService;
-import service.interfaces.StatisticService;
-import service.interfaces.StrategyService;
-import service.interfaces.TradeService;
+import services.interfaces.ActionService;
+import services.interfaces.ActiveService;
+import services.interfaces.PredictionService;
+import services.interfaces.StatisticService;
+import services.interfaces.StrategyService;
+import services.interfaces.TradeService;
 
 @Slf4j
 @Service

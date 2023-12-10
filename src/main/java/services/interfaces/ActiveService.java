@@ -1,8 +1,8 @@
-package service.interfaces;
+package services.interfaces;
 
 import java.util.List;
 
-import entity.Active;
+import entities.Active;
 
 public interface ActiveService {
 

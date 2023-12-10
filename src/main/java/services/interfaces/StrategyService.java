@@ -1,11 +1,11 @@
-package service.interfaces;
+package services.interfaces;
 
 import java.util.List;
 import java.util.Map;
 
-import entity.Action;
-import entity.Active;
-import entity.Prediction;
+import entities.Action;
+import entities.Active;
+import entities.Prediction;
 
 public interface StrategyService {
 

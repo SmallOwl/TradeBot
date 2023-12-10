@@ -1,4 +1,4 @@
-package service.interfaces;
+package services.interfaces;
 
 public interface TradeService {
 

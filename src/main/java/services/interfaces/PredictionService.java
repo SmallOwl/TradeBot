@@ -1,9 +1,9 @@
-package service.interfaces;
+package services.interfaces;
 
 import java.util.Map;
 
-import entity.Active;
-import entity.Prediction;
+import entities.Active;
+import entities.Prediction;
 
 public interface PredictionService {
 
