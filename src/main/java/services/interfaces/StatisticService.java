@@ -1,18 +1,25 @@
 package services.interfaces;
 
-import java.util.List;
-
-import entities.ActionStatus;
+import engines.PredictionEngine;
+import engines.StrategyEngine;
+import entities.Active;
 
 public interface StatisticService {
 
+  /**
+   * Using for getting best PredictionEngine for active
+   *
+   * @param active foreach PredictorEngine returned
+   * @return best PredictorEngine for active
+   */
+  PredictionEngine getPredictionEngine(Active active);
 
   /**
-   * Using for saving List<ActionStatus>. This data can be used for debugging or improvement predictions and strategies
+   * Using for getting best StrategyEngine for active
    *
-   * @param actionStatusList List of statuses from ActionService. Cannot be null
-   * @return status of saving. If save is ok return true, else false
+   * @param active foreach StrategyEngine returned
+   * @return best StrategyEngine for active
    */
-  boolean saveActionStatus(List<ActionStatus> actionStatusList);
+  StrategyEngine getStrategyEngine(Active active);
 
 }

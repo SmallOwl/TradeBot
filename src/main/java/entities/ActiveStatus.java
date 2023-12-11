@@ -4,7 +4,7 @@ public enum ActiveStatus {
 
   TRADE,
   TEST,
-  DISABLE,
+  DISABLED,
   REMOVE_FROM_PLATFORM,
   NO_STATUS;
 
