@@ -16,7 +16,7 @@ public interface FileUtil {
      * @return List of type T
      * @param <T> returned type
      */
-    <T> List<T> readValueFromFile(Path path, Class<T> clazz, StandardOpenOption openOption);
+    <T> List<T> readValueFromFile(Path path, Class<T> clazz, StandardOpenOption... openOption);
 
     /**
      *
@@ -25,6 +25,6 @@ public interface FileUtil {
      * @param openOption option for file opening
      * @return result of writing to file
      */
-    <T> boolean writeValueToFile(Path path, Stream<T> data, StandardOpenOption openOption);
+    <T> boolean writeValueToFile(Path path, Stream<T> data, StandardOpenOption... openOption);
 
 }

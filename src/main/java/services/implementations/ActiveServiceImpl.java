@@ -42,7 +42,7 @@ public class ActiveServiceImpl implements ActiveService {
                 .flatMap(platform -> platformUtil.getActives(platform).stream())
                 .toList();
         useActives = mergeActiveCollections(fileActives, platformActives, mergeActiveBiFunction());
-        fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.WRITE)
+        fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
     }
 
     @Override
