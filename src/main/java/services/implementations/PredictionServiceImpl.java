@@ -3,6 +3,7 @@ package services.implementations;
 import engines.PredictionEngine;
 import entities.Active;
 import entities.Prediction;
+import entities.PredictionEngineStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import services.interfaces.PredictionService;
 import services.interfaces.StatisticService;
@@ -20,7 +21,7 @@ public class PredictionServiceImpl implements PredictionService {
     }
 
     @Override
-    public List<PredictionEngine> getEnabledPredictionEngines(Active active) {
+    public List<PredictionEngine> getPredictionEngines(Active active, List<PredictionEngineStatus> predictionEngineStatusList) {
         return null;
     }
 

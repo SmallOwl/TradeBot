@@ -5,14 +5,11 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import entities.Action;
-import entities.ActionStatus;
-import entities.Active;
-import entities.Prediction;
 import lombok.extern.slf4j.Slf4j;
 import services.interfaces.*;
 
@@ -40,7 +37,7 @@ public class TradeServiceImpl implements TradeService {
 
   @Scheduled(fixedRate = 1000)
   public void trade() {
-    List<Active> activeList = activeService.getEnabledActives();
+    List<Active> activeList = activeService.getActives(List.of(ActiveStatus.TRADE));
     Map<Active, Prediction> activePredictionMap = activeList
       .stream()
       .collect(Collectors.toMap(Function.identity(), active -> predictionService.getPrediction(active)));

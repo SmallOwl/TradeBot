@@ -3,6 +3,7 @@ package services.interfaces;
 import engines.PredictionEngine;
 import entities.Active;
 import entities.Prediction;
+import entities.PredictionEngineStatus;
 
 import java.util.List;
 
@@ -20,8 +21,9 @@ public interface PredictionService {
      * Using in StatisticService for analyzing PredictionEngine
      *
      * @param active Active for prediction. Cannot be null
+     * @param predictionEngineStatusList List of PredictionEngineStatus needed. Cannot be null
      * @return List of enabled or test PredictionEngine for Active
      */
-    List<PredictionEngine> getEnabledPredictionEngines(Active active);
+    List<PredictionEngine> getPredictionEngines(Active active, List<PredictionEngineStatus> predictionEngineStatusList);
 
 }

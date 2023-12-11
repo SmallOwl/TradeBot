@@ -51,10 +51,10 @@ public class ActiveServiceImpl implements ActiveService {
     }
 
     @Override
-    public List<Active> getEnabledActives() {
+    public List<Active> getActives(List<ActiveStatus> activeStatusList) {
         return useActives
                 .stream()
-                .filter(active -> active.getActiveStatus().equals(ActiveStatus.TRADE) || active.getActiveStatus().equals(ActiveStatus.TEST))
+                .filter(active -> activeStatusList.contains(active.getActiveStatus()))
                 .toList();
     }
 
