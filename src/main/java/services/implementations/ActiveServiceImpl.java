@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import services.interfaces.ActiveService;
 import utils.interfaces.FileUtil;
 import utils.interfaces.PlatformUtil;
@@ -18,6 +19,7 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 @Slf4j
+@Service
 public class ActiveServiceImpl implements ActiveService {
 
     @Autowired
@@ -38,7 +40,7 @@ public class ActiveServiceImpl implements ActiveService {
     @Async
     @Scheduled(fixedRate = 3600000)
     private void refreshActives() {
-        List<Active> fileActives = fileUtil.readValueFromFile(activesFilePath, Active.class, StandardOpenOption.READ);
+        List<Active> fileActives = fileUtil.readListValueFromFile(activesFilePath, Active.class, StandardOpenOption.READ);
         List<Active> platformActives = Arrays.stream(Platform.values())
                 .flatMap(platform -> platformUtil.getActives(platform).stream())
                 .toList();
