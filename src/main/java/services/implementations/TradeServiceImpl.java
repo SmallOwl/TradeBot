@@ -35,6 +35,7 @@ public class TradeServiceImpl implements TradeService {
   @Autowired
   private LogService logService;
 
+  //TODO Доделать тревогу, если action пошел по пизде
   @Scheduled(fixedRate = 1000)
   public void trade() {
     List<Active> activeList = activeService.getActives(List.of(ActiveStatus.TRADE));

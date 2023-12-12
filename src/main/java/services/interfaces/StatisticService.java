@@ -15,11 +15,10 @@ public interface StatisticService {
   PredictionEngine getPredictionEngine(Active active);
 
   /**
-   * Using for getting best StrategyEngine for active
+   * Using for getting best StrategyEngine
    *
-   * @param active foreach StrategyEngine returned
    * @return best StrategyEngine for active
    */
-  StrategyEngine getStrategyEngine(Active active);
+  StrategyEngine getStrategyEngine();
 
 }
