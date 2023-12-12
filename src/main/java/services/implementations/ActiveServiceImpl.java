@@ -14,9 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ActiveServiceImpl implements ActiveService {
 
@@ -29,6 +26,7 @@ public class ActiveServiceImpl implements ActiveService {
     @Autowired
     private Path activesFilePath;
 
+    //TODO Добавить связку с пропертей
     @Autowired
     private ActiveStatus defaultActiveStatus;
 
