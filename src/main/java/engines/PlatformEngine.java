@@ -1,4 +1,4 @@
-package utils.interfaces;
+package engines;
 
 import entities.Action;
 import entities.Active;
@@ -6,7 +6,7 @@ import entities.Platform;
 
 import java.util.List;
 
-public interface PlatformUtil {
+public interface PlatformEngine {
 
     /**
      * Using to get all actives from platform

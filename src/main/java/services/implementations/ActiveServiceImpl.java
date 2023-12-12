@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import services.interfaces.ActiveService;
 import utils.interfaces.FileUtil;
-import utils.interfaces.PlatformUtil;
+import engines.PlatformEngine;
 
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -26,7 +26,7 @@ public class ActiveServiceImpl implements ActiveService {
     private FileUtil fileUtil;
 
     @Autowired
-    private PlatformUtil platformUtil;
+    private PlatformEngine platformEngine;
 
     @Autowired
     private Path activesFilePath;
@@ -42,7 +42,7 @@ public class ActiveServiceImpl implements ActiveService {
     private void refreshActives() {
         List<Active> fileActives = fileUtil.readListValueFromFile(activesFilePath, Active.class, StandardOpenOption.READ);
         List<Active> platformActives = Arrays.stream(Platform.values())
-                .flatMap(platform -> platformUtil.getActives(platform).stream())
+                .flatMap(platform -> platformEngine.getActives(platform).stream())
                 .toList();
         useActives = mergeActiveCollections(fileActives, platformActives, mergeActiveBiFunction());
         if(!fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.CREATE,
