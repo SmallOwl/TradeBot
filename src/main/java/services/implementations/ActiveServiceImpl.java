@@ -6,6 +6,8 @@ import entities.Platform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
+
+import lombok.extern.slf4j.Slf4j;
 import services.interfaces.ActiveService;
 import utils.interfaces.FileUtil;
 import utils.interfaces.PlatformUtil;
@@ -15,6 +17,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.function.BiFunction;
 
+@Slf4j
 public class ActiveServiceImpl implements ActiveService {
 
     @Autowired
@@ -40,7 +43,11 @@ public class ActiveServiceImpl implements ActiveService {
                 .flatMap(platform -> platformUtil.getActives(platform).stream())
                 .toList();
         useActives = mergeActiveCollections(fileActives, platformActives, mergeActiveBiFunction());
-        fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+        if(!fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.CREATE,
+          StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE)) {
+            log.error("Exception in List<Active> saving {}", useActives);
+            throw new RuntimeException();
+        }
     }
 
     @Override
