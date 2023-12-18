@@ -2,10 +2,11 @@ package services.interfaces;
 
 import java.util.List;
 
-import entities.Action;
-import entities.ActionStatus;
+import entities.actions.Action;
+import entities.actions.ActionStatus;
+import entities.platforms.Platform;
 
-public interface ActionService {
+public interface ActionService<P extends Platform> {
 
   /**
    * Using for execution actions

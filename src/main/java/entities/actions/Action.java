@@ -1,5 +1,6 @@
-package entities;
+package entities.actions;
 
+import entities.platforms.Platform;
 import lombok.Data;
 
 @Data

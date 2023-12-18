@@ -3,9 +3,9 @@ package services.interfaces;
 import java.util.List;
 import java.util.Map;
 
-import entities.Action;
-import entities.Active;
-import entities.Prediction;
+import entities.actions.Action;
+import entities.actives.Active;
+import entities.predictions.Prediction;
 
 public interface StrategyService {
 

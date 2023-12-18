@@ -1,10 +1,11 @@
 package services.interfaces;
 
 import engines.PlatformEngine;
-import entities.Platform;
+
+import java.util.List;
 
 public interface PlatformService {
 
-    PlatformEngine getPlatforms(Platform platform);
+    List<PlatformEngine> getPlatformsEngines();
 
 }

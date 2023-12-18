@@ -1,6 +1,6 @@
 package services.interfaces;
 
-import entities.ActionStatus;
+import entities.actions.ActionStatus;
 
 import java.util.List;
 

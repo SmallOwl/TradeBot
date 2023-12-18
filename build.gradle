@@ -32,9 +32,10 @@ repositories {
 }
 
 dependencies {
-    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
 

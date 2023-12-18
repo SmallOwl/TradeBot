@@ -1,7 +1,7 @@
 package engines;
 
-import entities.Active;
-import entities.Prediction;
+import entities.actives.Active;
+import entities.predictions.Prediction;
 
 public interface PredictionEngine {
 

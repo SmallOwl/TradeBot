@@ -2,7 +2,7 @@ package services.interfaces;
 
 import engines.PredictionEngine;
 import engines.StrategyEngine;
-import entities.Active;
+import entities.actives.Active;
 
 public interface StatisticService {
 

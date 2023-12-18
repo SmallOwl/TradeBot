@@ -1,8 +1,8 @@
 package engines;
 
-import entities.Action;
-import entities.Active;
-import entities.Platform;
+import entities.actions.Action;
+import entities.actives.Active;
+import entities.platforms.Platform;
 
 import java.util.List;
 

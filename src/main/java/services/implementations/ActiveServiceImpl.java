@@ -1,8 +1,8 @@
 package services.implementations;
 
-import entities.Active;
-import entities.ActiveStatus;
-import entities.Platform;
+import entities.actives.Active;
+import entities.actives.ActiveStatus;
+import entities.platforms.Platform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import services.interfaces.ActiveService;
+import services.interfaces.PlatformService;
 import utils.interfaces.FileUtil;
 import engines.PlatformEngine;
 
@@ -22,34 +23,38 @@ import java.util.function.BiFunction;
 @Service
 public class ActiveServiceImpl implements ActiveService {
 
-    @Autowired
-    private FileUtil fileUtil;
+    private final FileUtil fileUtil;
 
-    @Autowired
-    private PlatformEngine platformEngine;
+    private final PlatformService platformService;
 
-    @Autowired
-    private Path activesFilePath;
+    private final Path activesFilePath;
 
     //TODO Добавить связку с пропертей
-    @Autowired
-    private ActiveStatus defaultActiveStatus;
+    private final ActiveStatus defaultActiveStatus;
 
     private List<Active> useActives;
 
+    @Autowired
+    public ActiveServiceImpl(FileUtil fileUtil, PlatformService platformService, Path activesFilePath, ActiveStatus defaultActiveStatus) {
+        this.fileUtil = fileUtil;
+        this.platformService = platformService;
+        this.activesFilePath = activesFilePath;
+        this.defaultActiveStatus = defaultActiveStatus;
+    }
+
     @Async
     @Scheduled(fixedRate = 3600000)
-    private void refreshActives() {
-        List<Active> fileActives = fileUtil.readListValueFromFile(activesFilePath, Active.class, StandardOpenOption.READ);
-        List<Active> platformActives = Arrays.stream(Platform.values())
-                .flatMap(platform -> platformEngine.getActives(platform).stream())
-                .toList();
-        useActives = mergeActiveCollections(fileActives, platformActives, mergeActiveBiFunction());
-        if(!fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.CREATE,
-          StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE)) {
-            log.error("Exception in List<Active> saving {}", useActives);
-            throw new RuntimeException();
-        }
+    public void refreshActives() {
+//        List<Active> fileActives = fileUtil.readListValueFromFile(activesFilePath, Active.class, StandardOpenOption.READ);
+//        List<Active> platformActives = Arrays.stream(Platform.values())
+//                .flatMap(platform -> platformEngine.getActives(platform).stream())
+//                .toList();
+//        useActives = mergeActiveCollections(fileActives, platformActives, mergeActiveBiFunction());
+//        if(!fileUtil.writeValueToFile(activesFilePath, useActives.stream(), StandardOpenOption.CREATE,
+//          StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE)) {
+//            log.error("Exception in List<Active> saving {}", useActives);
+//            throw new RuntimeException();
+//        }
     }
 
     @Override
@@ -78,9 +83,9 @@ public class ActiveServiceImpl implements ActiveService {
         return result;
     }
 
-    //TODO Доделать в конце
     private boolean activeEquals(Active first, Active second) {
-        return true;
+        return Objects.equals(first.getPlatform(), second.getPlatform()) &&
+                Objects.equals(first.getCurrency(), second.getCurrency());
     }
 
 }

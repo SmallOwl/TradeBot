@@ -1,4 +1,4 @@
-package entities;
+package entities.predictions;
 
 public class Prediction {
 

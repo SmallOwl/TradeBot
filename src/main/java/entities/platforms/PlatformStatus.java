@@ -1,4 +1,4 @@
-package entities;
+package entities.platforms;
 
 public enum PlatformStatus {
 }
