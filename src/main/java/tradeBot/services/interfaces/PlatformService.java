@@ -8,6 +8,12 @@ import java.util.Optional;
 
 public interface PlatformService {
 
-    Collection<Active> getAllActives(Optional<Platform> platform);
+    /**
+     * Using for getting all actives
+     *
+     * @param platform Platform for getting actives
+     * @return Collection of Actives
+     */
+    Collection<Active> getAllActives(Platform platform);
 
 }
