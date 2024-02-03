@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+version = System.getenv('BUILD_NUMBER') ?: System.getenv('BUILD_ID')
+version = version == 'unspecified' ? "SNAPSHOT" : version
+
+jar {
+    archiveBaseName = 'trade-bot'
+    manifest {
+        attributes "Main-Class": "Main"
+    }
+    enabled=false
+    archiveClassifier = ''
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
