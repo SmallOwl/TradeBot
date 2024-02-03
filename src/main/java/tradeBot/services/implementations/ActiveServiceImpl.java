@@ -21,7 +21,7 @@ public class ActiveServiceImpl implements ActiveService {
 
     @Override
     public Collection<Active> getAllActives() {
-        return platformService.getAllActives(Optional.empty());
+        return platformService.getAllActives(null);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ActiveServiceImpl implements ActiveService {
             log.warn("Currency {} or Platform {} is not valid", currency, platform);
             return Optional.empty();
         }
-        return parseActiveByCurrency(platformService.getAllActives(Optional.of(platform)), currency);
+        return parseActiveByCurrency(platformService.getAllActives(platform), currency);
     }
 
     //TODO Доделать валидацию
