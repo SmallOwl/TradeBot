@@ -10,4 +10,6 @@ public class Prediction {
 
     private final Class<PredictionEngine> predictionEngine;
 
+    private final Long timestamp;
+
 }

@@ -49,4 +49,9 @@ public class PredictionServiceImpl implements PredictionService {
                 .map(Optional::get)
                 .toList();
     }
+
+    @Override
+    public Collection<PredictionEngine> getAllPredictionEngines() {
+        return predictionEngineMap.values();
+    }
 }

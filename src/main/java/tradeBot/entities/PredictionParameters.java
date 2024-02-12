@@ -10,4 +10,10 @@ public class PredictionParameters {
 
     private final Active active;
 
+    private final Long currentTimestamp;
+
+    private final Long preferStartTimestamp;
+
+    private final Long preferEndTimestamp;
+
 }

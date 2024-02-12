@@ -1,5 +1,6 @@
 package tradeBot.services.interfaces;
 
+import tradeBot.engines.interfaces.PredictionEngine;
 import tradeBot.entities.Prediction;
 import tradeBot.entities.PredictionParameters;
 
@@ -24,4 +25,10 @@ public interface PredictionService {
      */
     Collection<Prediction> getAllPredictions(PredictionParameters predictionParameters);
 
+    /**
+     * Using for getting all existing PredictionEngines Classes
+     *
+     * @return Collection of PredictionEngines Classes
+     */
+    Collection<Class<? extends PredictionEngine>> getAllPredictionEngines();
 }
