@@ -1,8 +1,9 @@
 package tradeBot.services.interfaces;
 
 import tradeBot.engines.interfaces.PredictionEngine;
+import tradeBot.entities.Active;
 import tradeBot.entities.Prediction;
-import tradeBot.entities.PredictionParameters;
+import tradeBot.entities.PredictionParameter;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,23 +13,17 @@ public interface PredictionService {
     /**
      * Using for getting predictions
      *
-     * @param predictionParameters PredictionParameters for search
+     * @param predictionEngine PredictionEngine for prediction
+     * @param predictionParameters PredictionParameter array for prediction
      * @return Optional of Prediction
      */
-    Optional<Prediction> getPrediction(PredictionParameters predictionParameters);
-
-    /**
-     * Using for getting predictions
-     *
-     * @param predictionParameters PredictionParameters for search
-     * @return Optional of Prediction
-     */
-    Collection<Prediction> getAllPredictions(PredictionParameters predictionParameters);
+    Optional<Prediction> getPrediction(Active active, Class<PredictionEngine> predictionEngine,
+                                       PredictionParameter[] predictionParameters);
 
     /**
      * Using for getting all existing PredictionEngines Classes
      *
      * @return Collection of PredictionEngines Classes
      */
-    Collection<Class<? extends PredictionEngine>> getAllPredictionEngines();
+    Collection<Class<PredictionEngine>> getAllPredictionEngineClasses();
 }
