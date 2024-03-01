@@ -1,4 +1,4 @@
-package tradeBot.utils.interfaces;
+package core.utils.interfaces;
 
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -17,18 +17,6 @@ public interface FileUtil {
      * @param <T> returned type
      */
     <T> List<T> readListValueFromFile(Path path, Class<T> clazz, StandardOpenOption... openOption);
-
-    /**
-     * Using for reading map of values from file by path with type clazz
-     *
-     * @param path of file with data
-     * @param clazzKey class of key
-     * @param clazzValue class of value
-     * @param openOption option for file opening
-     * @return List of type T
-     * @param <T> returned type
-     */
-    <T> List<T> readMapValueFromFile(Path path, Class<T> clazzKey, Class<T> clazzValue, StandardOpenOption... openOption);
 
     /**
      *
