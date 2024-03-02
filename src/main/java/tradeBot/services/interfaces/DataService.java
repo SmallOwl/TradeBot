@@ -1,11 +1,11 @@
-package dataService.services.interfaces;
+package tradeBot.services.interfaces;
 
 import java.util.List;
 
-import core.entities.Active;
-import core.entities.ActiveData;
-import core.entities.PredictionData;
-import core.entities.PredictionParameter;
+import tradeBot.entities.Active;
+import tradeBot.entities.ActiveData;
+import tradeBot.entities.prediction.PredictionData;
+import tradeBot.entities.prediction.PredictionParameter;
 
 public interface DataService {
 

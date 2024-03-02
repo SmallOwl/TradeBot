@@ -1,10 +1,9 @@
-package selectionService.services.interfaces;
+package tradeBot.services.interfaces;
 
 import java.util.Collection;
-import java.util.List;
 
-import core.entities.PredictionParameter;
-import core.entities.PredictionStatistic;
+import tradeBot.entities.prediction.PredictionParameter;
+import tradeBot.entities.prediction.PredictionStatistic;
 
 public interface SelectionService {
 

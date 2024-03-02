@@ -1,4 +1,4 @@
-package core.utils.interfaces;
+package tradeBot.utils.interfaces;
 
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;

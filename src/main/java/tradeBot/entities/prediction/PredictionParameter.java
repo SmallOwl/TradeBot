@@ -1,4 +1,4 @@
-package core.entities;
+package tradeBot.entities.prediction;
 
 import java.util.Iterator;
 

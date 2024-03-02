@@ -1,4 +1,4 @@
-package core.entities;
+package tradeBot.entities;
 
 import lombok.Data;
 
