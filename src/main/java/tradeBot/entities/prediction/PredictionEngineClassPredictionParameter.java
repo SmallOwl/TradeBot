@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import tradeBot.engines.PredictionEngine;
 
-@Data
+@Setter
 @RequiredArgsConstructor
 public class PredictionEngineClassPredictionParameter implements PredictionParameter<Class<PredictionEngine>> {
 

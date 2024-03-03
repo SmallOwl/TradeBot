@@ -5,16 +5,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import tradeBot.engines.PredictionEngine;
 import tradeBot.entities.prediction.PredictionEngineClassPredictionParameter;
 import tradeBot.entities.prediction.PredictionParameter;
 import tradeBot.entities.prediction.PredictionStatistic;
 import tradeBot.services.interfaces.DataService;
 import lombok.RequiredArgsConstructor;
+import tradeBot.services.interfaces.PredictionService;
 import tradeBot.services.interfaces.SelectionService;
 
 @Service
@@ -23,9 +24,9 @@ public class SelectionServiceImpl implements SelectionService {
 
   private final DataService dataService;
 
-  private final Collection<PredictionStatistic> predictionStatistics = new ArrayList<>();
+  private final PredictionService predictionService;
 
-  private final PredictionEngineClassPredictionParameter predictionEngineClassPredictionParameter;
+  private final Collection<PredictionStatistic> predictionStatistics = new ArrayList<>();
 
   @Override
   public Collection<PredictionParameter<?>> selectPrediction(Collection<PredictionParameter<?>> predictionParameters) {
@@ -46,11 +47,17 @@ public class SelectionServiceImpl implements SelectionService {
 
   @Override
   public void refreshPredictionStatistic() {
-    while(predictionEngineClassPredictionParameter.hasNext()) {
-      Class<PredictionEngine> predictionEngineClass = predictionEngineClassPredictionParameter.next();
-      predictionEngineClassPredictionParameter.setPredictionEngineClass(predictionEngineClass);
-      predictionEngineClass
-    }
+    predictionService.getPredictionEnginesClasses()
+      .stream()
+      .forEach(predictionEngineClass -> {
+        PredictionEngineClassPredictionParameter predictionEngineClassPredictionParameter =
+          new PredictionEngineClassPredictionParameter(Collections.emptyList());
+        predictionEngineClassPredictionParameter.setPredictionEngineClass(predictionEngineClass);
+        List<Class<PredictionParameter<?>>> predictionParametersClasses = predictionService.getPredictionParametersClasses(predictionEngineClass);
+        predictionParametersClasses
+          .stream()
+          .forEach(predictionParameterClass -> );
+      });
   }
 
 }
