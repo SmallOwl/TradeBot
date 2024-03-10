@@ -1,5 +1,6 @@
 package tradeBot.entities.prediction;
 
+import java.util.Collection;
 import java.util.List;
 
 import lombok.Data;
@@ -7,7 +8,9 @@ import lombok.Data;
 @Data
 public class PredictionStatistic {
 
-  private final List<PredictionParameter<?>> predictionParameters;
+  private final Collection<PredictionParameter<?>> predictionParameters;
+
+  private final PredictionData predictionData;
 
   private final double resultScore;
 

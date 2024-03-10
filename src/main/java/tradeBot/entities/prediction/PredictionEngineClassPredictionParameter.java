@@ -3,22 +3,22 @@ package tradeBot.entities.prediction;
 import java.util.Iterator;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import tradeBot.engines.PredictionEngine;
 
-@Setter
-@RequiredArgsConstructor
+@Data
 public class PredictionEngineClassPredictionParameter implements PredictionParameter<Class<PredictionEngine>> {
-
-  @Autowired
-  private final List<Class<PredictionEngine>> predictionEngineClasses;
 
   private Class<PredictionEngine> predictionEngineClass;
 
-  private final Iterator<Class<PredictionEngine>> predictionEngineClassesIterator = predictionEngineClasses.iterator();
+  private List<Class<PredictionEngine>> predictionEngineClasses;
+
+  private Iterator<Class<PredictionEngine>> predictionEngineClassesIterator;
+
+  @Override
+  public void setParameter(Class<PredictionEngine> parameter) {
+    this.predictionEngineClass = parameter;
+  }
 
   @Override
   public Class<PredictionEngine> getParameter() {
@@ -37,7 +37,8 @@ public class PredictionEngineClassPredictionParameter implements PredictionParam
 
   @Override
   public Class<PredictionEngine> next() {
-    return predictionEngineClassesIterator.next();
+    this.predictionEngineClass = predictionEngineClassesIterator.next();
+    return predictionEngineClass;
   }
 
 }
