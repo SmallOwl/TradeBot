@@ -1,14 +1,11 @@
 package tradeBot.services.implementations;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -64,7 +61,8 @@ public class SelectionServiceImpl implements SelectionService {
         getPredictionParametersCollections(predictionEngineClass);
       for(Collection<PredictionParameter<?>> predictionParameters: predictionParametersCollections) {
         PredictionData predictionData = dataService.getPredictionData(predictionParameters);
-        new PredictionStatistic(predictionParameters, predictionData, 0);
+        PredictionStatistic predictionStatistic = new PredictionStatistic(predictionParameters, predictionData, 0);
+        predictionStatistics.add(predictionStatistic);
       }
     }
   }
