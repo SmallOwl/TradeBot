@@ -31,6 +31,16 @@ public class PredictionEngineClassPredictionParameter implements PredictionParam
   }
 
   @Override
+  public PredictionParameter<Class<PredictionEngine>> nextClone() {
+    PredictionEngineClassPredictionParameter predictionEngineClassPredictionParameter =
+      new PredictionEngineClassPredictionParameter();
+    predictionEngineClassPredictionParameter.setPredictionEngineClass(this.predictionEngineClass);
+    predictionEngineClassPredictionParameter.setPredictionEngineClasses(this.predictionEngineClasses);
+    predictionEngineClassPredictionParameter.setPredictionEngineClassesIterator(this.predictionEngineClassesIterator);
+    return predictionEngineClassPredictionParameter;
+  }
+
+  @Override
   public boolean hasNext() {
     return predictionEngineClassesIterator.hasNext();
   }
